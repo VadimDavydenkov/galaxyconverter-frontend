@@ -1,0 +1,30 @@
+<form [formGroup]="form" style="height: 100%" (ngSubmit)="submitForm()">
+  <mat-grid-list cols="14" style="height: 100%" rowHeight="fit">
+    <mat-grid-tile colspan="14" rowspan="13">
+      <mat-list style=" align-self: flex-end; width: 100%;">
+        @for (message of messages; track message) {
+          @if (message.incoming) {
+            <mat-list-item style="text-align: left;">
+                {{message.text}}
+            </mat-list-item>
+          }
+          @else {
+            <mat-list-item style="text-align: right">
+                {{message.text}}
+            </mat-list-item>
+          }
+
+        }
+      </mat-list>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="13">
+      <mat-form-field style="width: 99%; height: 100%">
+        <input matInput formControlName="text">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+      <button type="submit" style="width: 90%; height: 90%" mat-stroked-button>Send</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
+
